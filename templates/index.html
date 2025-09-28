@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speedsta Supermarket &copy;</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+    table {
+      width: 50%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      position: relative;
+      left: 25%;
+    }
+    table a{
+        color: white;
+    }
+    .image-container {
+      display: inline-block;
+      text-align: center;
+      margin: 10px;
+    }
+
+    .image-container img {
+      width: 200px;
+      border-radius: 10%;
+      height: auto;
+      display: block;
+    }
+
+    .image-container p {
+      margin-top: 5px;
+      font-size: 14px;
+      color: black;
+    }
+    .head-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+    }
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: blue;
+    }
+    .logo span {
+        color: green;
+    }
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 20px;
+        color: #000;
+        text-align: center;
+    }
+    nav ul li:hover{
+        transform: translateY(-5px);
+    }
+    nav ul li a {
+        text-decoration: none;
+        color: yellow;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    #user{
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid white;
+        text-align: center;
+    }
+    header {
+        padding: 15px 0;
+        box-shadow: 0 2px 5px black;
+        background-color: peru;
+        /* border-bottom: 10px solid #ddd; */
+    }
+    .explaination {
+        background-color: orange;
+        padding: 50px 20px;
+        text-align: center;
+    }
+    .container h1{
+        font-size: 36px;
+        color: #333;
+    }
+    .btn{
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: rgb(66, 48, 14);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    .image-container:hover img {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 30px 0;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+    }
+    </style>
+</head>
+<body style="background: grey;">
+    <header>
+        <div class="head-content">
+            <div class="logo">Speedsta🛒 <span>Supermarket</span></div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('catalogue') }}">Catalogue</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li>
+                        <a href="{{ url_for('form') }}"><img src="{{ url_for('static', filename='img/user.jpg') }}" alt="User" id="user"></a>
+                        <br>
+                        <span id="username">Guest</span>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <br>
+    <section class="explaination">
+        <div class="container">
+            <h1>Fresh Groceries at Amazing Prices</h1>
+            <p>Shop the best quality fruits, vegetables, dairy products and more with weekly discounts and offers</p>
+            <a href="#" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <h3><center>Here's a catelog of our products:</center></h3>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='/img/ace maize meal.jpg') }}" alt="Maize meal Ace">
+        <p>Ace maize meal for R130</p>
+    </div>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='/img/apples.jpg') }}" alt="Apples">
+        <p>Apples for R39</p>
+    </div>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='/img/black pepper.jpg') }}" alt="Black Pepper">
+        <p>Black Pepper for R40</p>
+    </div>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='/img/bwell olive oil.jpg') }}" alt="B-Well Olive Oil">
+        <p>B-Well Olive Oil for R87</p>
+    </div>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='/img/chicken spice.jpg') }}" alt="Chicken Spice">
+        <p>Chicken Spice fr R30</p>
+    </div>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='/img/clover milk.jpg') }}" alt="Clover Milk">
+        <p>Clover milk for R98</p>
+    </div>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='/img/kellogs noodles.jpg') }}" alt="Kellogs Noodles">
+        <p>kellogs noodles for R35</p>
+    </div>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='/img/large eggs.jpg') }}" alt="Large Eggs">
+        <p>Large eggs for R60</p>
+    </div>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='/img/maggi noodles.jpg') }}" alt="Nodles">
+        <p>Maggi Noodles for R30</p>
+    </div>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='/img/maize meal.jpg') }}" alt="White Star Maize Meal">
+        <p>White Star Maize meal for R88</p>
+    </div>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='/img/mixed spice.jpg') }}" alt="Mixed spice">
+        <p>Rbbertsons Mixed Spice for R27</p>
+    </div>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='/img/oil sunfoil.jpg') }}" alt="Sunfoil Oil">
+        <p>Sunfoil Oil for R60</p>
+    </div>
+    <br>
+    <a href="http://www.ukzn.ac.za"><img src="{{ url_for('static', filename='/img/ukzn link.png') }}" alt=""></a>
+    <br>
+    <br>
+    <footer>
+        <div>Email: Speedsta@biz.ac.za</div>
+        <div>Contact: 031 678 9943</div>
+    </footer>
+</body>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const user = localStorage.getItem("username") || "Guest";
+    document.getElementById("username").textContent = user;
+});
+</script>
+</html>
