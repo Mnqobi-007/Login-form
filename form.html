@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up / Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f7ee;
+            color: #333;
+            line-height: 1.6;
+            /* padding: 20px; */
+        }
+
+        .head-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+    }
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: blue;
+    }
+    .logo span{
+        font-size: 24px;
+        font-weight: bold;
+        color: green;
+    }
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 20px;
+        color: #000;
+        text-align: center;
+    }
+    nav ul li:hover{
+        transform: translateY(-5px);
+    }
+    nav ul li a {
+        text-decoration: none;
+        color: yellow;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    #user{
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid white;
+        text-align: center;
+    }
+    header {
+        padding: 15px 0;
+        box-shadow: 0 2px 5px black;
+        background-color: peru;
+        /* border-bottom: 10px solid #ddd; */
+    }
+    h1{
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: rgb(33, 81, 97);
+    }
+    .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: peru;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .logo span {
+            color: green;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        
+        .form-section {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+            border-right: 1px solid #eee;
+        }
+        
+        .feedback-section {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .section-title {
+            color: peru;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid peru;
+        }
+        
+        .form-toggle {
+            display: flex;
+            margin-bottom: 20px;
+            background: #f5f5f5;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .toggle-btn {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            background: #e0e0e0;
+            color: peru;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .toggle-btn.active {
+            background: peru;
+            color: white;
+        }
+        
+        form {
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: peru;
+            box-shadow: 0 0 5px black;
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background: peru;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: orange;
+        }
+        
+        .rating {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+        }
+        
+        .rating input {
+            display: none;
+        }
+        
+        .rating label {
+            cursor: pointer;
+            font-size: 24px;
+            color: #ccc;
+            transition: color 0.3s;
+        }
+        
+        .rating input:checked + label {
+            color: #ffc107;
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 15px;
+            color: #777;
+        }
+        
+        .form-footer a {
+            color: peru;
+            text-decoration: none;
+        }
+        
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Toggle */
+        #login-form, #register-form {
+            display: block;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.3s;
+        }
+        
+        #login-form:target, #register-form:target {
+            height: auto;
+            overflow: visible;
+        }
+        
+        #login-form:target ~ #register-form, 
+        #register-form:target ~ #login-form {
+            height: 0;
+            overflow: hidden;
+        }
+        
+        @media (max-width: 768px) {
+            .form-section, .feedback-section {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="head-content">
+            <div class="logo">Speedsta🛒 <span>Supermarket</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="second.html">Catelogue</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#"><img src="./img/user.jpg" alt="" id="user"></a>
+                    <br>
+                    username
+                </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <br>
+    <h1><center>Sign-up Login</center></h1>
+    <div class="content">
+            <div class="form-section">
+                <h2 class="section-title">Customer Authentication</h2>
+                
+                <div class="form-toggle">
+                    <a href="#login-form" class="toggle-btn active">Login</a>
+                    <a href="#register-form" class="toggle-btn">Register</a>
+                </div>
+                
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <button type="submit">Login to Account</button>
+                    
+                    <div class="form-footer">
+                        <a href="#">Forgot your password?</a>
+                    </div>
+                </form>
+                
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="new-email">Email Address</label>
+                        <input type="email" id="new-email" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="Enter your phone number">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="new-password">Password</label>
+                        <input type="password" id="new-password" placeholder="Create a password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+                    </div>
+                    
+                    <button type="submit">Create Account</button>
+                    
+                    <div class="form-footer">
+                        By registering, you agree to our <a href="#">Terms & Conditions</a>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="feedback-section">
+                <h2 class="section-title">Share Your Feedback</h2>
+                
+                <form id="feedback-form">
+                    <div class="form-group">
+                        <label for="feedback-name">Your Name</label>
+                        <input type="text" id="feedback-name" placeholder="Enter your name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="feedback-email">Email Address</label>
+                        <input type="email" id="feedback-email" placeholder="Enter your email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Rate Your Experience</label>
+                        <div class="rating">
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1">★</label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2">★</label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3">★</label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4">★</label>
+                            <input type="radio" id="star5" name="rating" value="5" checked>
+                            <label for="star5">★</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">Feedback Category</label>
+                        <select id="category">
+                            <option value="">Select a category</option>
+                            <option value="service">Customer Service</option>
+                            <option value="quality">Product Quality</option>
+                            <option value="pricing">Pricing</option>
+                            <option value="cleanliness">Store Cleanliness</option>
+                            <option value="suggestions">Suggestions</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Feedback</label>
+                        <textarea id="message" placeholder="Please share your experience or suggestions..." rows="5"></textarea>
+                    </div>
+                    
+                    <button type="submit">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 Speedsta Supermarket. All rights reserved.</p>
+            <p>Contact us: Speedsta@biz.ac.za | 031 678 9943</p>
+        </footer>
+    </div>
+</body>
+</html>
